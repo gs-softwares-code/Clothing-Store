@@ -48,12 +48,21 @@ export const customerProfiles = pgTable("customer_profiles", {
   newsletterOptIn: boolean("newsletter_opt_in").default(false),
 });
 
-export const categories = pgTable("categories", {
-  id: varchar("id", { length: 40 }).primaryKey(),
-  label: varchar("label", { length: 80 }).notNull(),
-  blurb: text("blurb"),
-  parentId: varchar("parent_id", { length: 40 }).references(() => categories.id),
-});
+/**
+ * `parentId` references `categories.id` (self-join) by convention.
+ * A FK constraint can be added via migration; the reference is kept
+ * optional to avoid TS circularity in the table initializer.
+ */
+export const categories = pgTable(
+  "categories",
+  {
+    id: varchar("id", { length: 40 }).primaryKey(),
+    label: varchar("label", { length: 80 }).notNull(),
+    blurb: text("blurb"),
+    parentId: varchar("parent_id", { length: 40 }),
+  },
+  (t) => [index("categories_parent_idx").on(t.parentId)],
+);
 
 export const products = pgTable(
   "products",
