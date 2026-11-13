@@ -24,7 +24,7 @@ test.describe("product detail", () => {
     await page.getByRole("button", { name: "Size guide" }).click();
     await expect(page.getByRole("dialog")).toBeVisible();
     await expect(page.getByText("Size guide", { exact: false }).first()).toBeVisible();
-    await page.getByRole("button", { name: "Close" }).first().click();
+    await page.getByRole("button", { name: "Close", exact: true }).click();
     await expect(page.getByRole("dialog")).toBeHidden();
   });
 

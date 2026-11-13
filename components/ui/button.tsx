@@ -37,7 +37,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     <button
       ref={ref}
       className={cn(
-        "inline-flex items-center justify-center gap-2 font-medium uppercase tracking-[0.12em] transition-colors duration-200 select-none disabled:cursor-not-allowed",
+        "inline-flex items-center justify-center gap-2 font-medium uppercase tracking-[0.12em] transition-[color,background-color,border-color,box-shadow,transform] duration-200 select-none active:scale-[0.98] disabled:cursor-not-allowed disabled:active:scale-100",
         variants[variant],
         sizes[size],
         fullWidth && "w-full",
@@ -70,7 +70,7 @@ export function LinkButton({
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center justify-center gap-2 font-medium uppercase tracking-[0.12em] transition-colors duration-200 select-none",
+        "inline-flex items-center justify-center gap-2 font-medium uppercase tracking-[0.12em] transition-[color,background-color,border-color,box-shadow,transform] duration-200 select-none active:scale-[0.98]",
         variants[variant],
         sizes[size],
         fullWidth && "w-full",

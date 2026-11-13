@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
@@ -34,6 +35,15 @@ export function useToast() {
 
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
+  // The live region is rendered into document.body via createPortal. Gate it on
+  // mount (client snapshot = true, server snapshot = false) so the server HTML
+  // matches the first client render — otherwise React throws a hydration
+  // mismatch for every page.
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
   const nextId = useRef(1);
 
   const dismiss = useCallback((id: number) => {
@@ -54,7 +64,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      {typeof document !== "undefined" &&
+      {mounted &&
         createPortal(
           <div
             aria-live="polite"

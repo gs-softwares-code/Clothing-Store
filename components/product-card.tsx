@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Product } from "@/lib/domain/types";
 import { useShop } from "@/lib/commerce/shop-context";
 import { useToast } from "./ui/toast";
-import { formatINR } from "@/lib/utils";
+import { cn, formatINR } from "@/lib/utils";
 import { ImageWithFallback } from "./image-with-fallback";
 import { IconBag, IconHeart, IconHeartFilled } from "./ui/icon";
 import { NewBadge, SaleBadge } from "./ui/badge";
@@ -67,7 +67,7 @@ export function ProductCard({ product }: { product: Product }) {
             <button
               onClick={quickAdd}
               aria-label={`Add ${product.name} to bag`}
-              className="flex h-10 w-full translate-y-1 items-center justify-center gap-2 bg-white/95 text-xs font-medium uppercase tracking-[0.12em] text-ink opacity-0 shadow-sm backdrop-blur transition-all duration-200 hover:bg-ink hover:text-white focus:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 max-lg:translate-y-0 max-lg:opacity-100"
+              className="flex h-10 w-full translate-y-1 items-center justify-center gap-2 bg-white/95 text-xs font-medium uppercase tracking-[0.12em] text-ink opacity-0 shadow-sm backdrop-blur transition-all duration-300 ease-out hover:bg-ink hover:text-white focus:opacity-100 active:scale-[0.98] group-hover:translate-y-0 group-hover:opacity-100 max-lg:translate-y-0 max-lg:opacity-100"
             >
               <IconBag size={15} />
               Add to bag
@@ -106,11 +106,16 @@ export function ProductCard({ product }: { product: Product }) {
         }}
         aria-label={wished ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
         aria-pressed={wished}
-        className={`absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 shadow-sm backdrop-blur transition-colors ${
+        className={`absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 shadow-sm backdrop-blur transition-[color,transform] active:scale-90 ${
           wished ? "text-sale" : "text-ink hover:text-sale"
         }`}
       >
-        {wished ? <IconHeartFilled size={17} /> : <IconHeart size={17} />}
+        <span
+          className={cn("flex", wished && "animate-[pop_280ms_ease]")}
+          aria-hidden="true"
+        >
+          {wished ? <IconHeartFilled size={17} /> : <IconHeart size={17} />}
+        </span>
       </button>
     </div>
   );

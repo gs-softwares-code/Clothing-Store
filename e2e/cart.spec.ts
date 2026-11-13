@@ -19,7 +19,7 @@ test.describe("cart", () => {
     await expect(drawer).toBeVisible();
     await expect(drawer.getByText("Relaxed Boxy Cotton Tee")).toBeVisible();
 
-    await page.getByRole("button", { name: "Increase quantity" }).click();
+    await drawer.getByRole("button", { name: "Increase quantity" }).click();
     await expect(page.getByText("₹2,580").first()).toBeVisible(); // 2 × 1290
 
     await page.getByRole("button", { name: /Remove Relaxed/ }).click();

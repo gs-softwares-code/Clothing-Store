@@ -7,9 +7,11 @@ test.describe("mobile experience", () => {
     await page.goto("/");
     test.skip((await page.viewportSize())!.width >= 768, "mobile-only control");
     await page.getByRole("button", { name: "Open menu" }).click();
-    await expect(page.getByRole("dialog")).toBeVisible();
-    await expect(page.getByRole("link", { name: "Women" })).toBeVisible();
-    await page.getByRole("link", { name: "Women" }).click();
+    const drawer = page.getByRole("dialog");
+    await expect(drawer).toBeVisible();
+    const womenLink = drawer.getByRole("link", { name: "Women", exact: true });
+    await expect(womenLink).toBeVisible();
+    await womenLink.click();
     await expect(page).toHaveURL(/\/women$/);
   });
 
@@ -27,6 +29,8 @@ test.describe("mobile experience", () => {
     await page.goto("/women");
     test.skip((await page.viewportSize())!.width >= 768, "touch-only behavior");
     const card = page.locator("a[href^='/product/']").filter({ has: page.locator("h3") }).first();
-    await expect(card.getByRole("button", { name: /Add to bag/ })).toBeVisible();
+    await expect(
+      card.getByRole("button").filter({ hasText: "Add to bag" }),
+    ).toBeVisible();
   });
 });

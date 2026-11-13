@@ -26,6 +26,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { cartCount, wishlist } = useShop();
   const pathname = usePathname();
 
@@ -38,6 +39,14 @@ export function Header() {
     setSearchOpen(false);
     setCartOpen(false);
   }, [pathname]);
+
+  // Elevate the bar once the page scrolls
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
@@ -55,7 +64,12 @@ export function Header() {
         </div>
 
         {/* Main bar */}
-        <div className="border-b border-line bg-canvas">
+        <div
+          className={cn(
+            "border-b border-line bg-canvas transition-shadow duration-300",
+            scrolled && "shadow-[0_10px_30px_-18px_rgba(24,24,22,0.35)]",
+          )}
+        >
           <div className="mx-auto flex h-16 max-w-[1440px] items-center gap-3 px-4 md:px-8 lg:px-12">
             <button
               className="flex h-10 w-10 items-center justify-center text-ink lg:hidden"
