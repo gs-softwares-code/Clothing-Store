@@ -1,0 +1,939 @@
+# PROJECT: Build a Premium UNIQLO-Inspired Fashion E-Commerce Website for GS Softwares
+
+## 1. YOUR ROLE
+
+Act as a principal full-stack engineer, senior e-commerce architect, UI/UX designer, creative director, conversion-rate optimization specialist, and QA engineer.
+
+Your mission is to engineer a premium, production-quality fashion e-commerce website inspired by the user experience, layout philosophy, visual presentation, and shopping experience of:
+
+**Reference website:** https://www.uniqlo.com/in/en/
+
+However, this is NOT an official UNIQLO website, an UNIQLO clone for commercial impersonation, or an attempt to reproduce its proprietary source code.
+
+You are creating an original fictional fashion retail brand as a showcase project for:
+
+**GS Softwares — AI Agent Engineering and Digital Solutions**
+
+The finished website must demonstrate the ability of GS Softwares to design and engineer sophisticated e-commerce platforms for fashion, apparel, lifestyle, and retail businesses.
+
+The result should feel like a real, established international fashion retailer—not a generic template or an agency landing page.
+
+---
+
+## 2. PROJECT IDENTITY
+
+Create an original fictional fashion brand.
+
+Working brand name: **FORME**
+
+Brand positioning:
+- Contemporary everyday clothing.
+- Minimalist fashion.
+- Functional design.
+- Premium essentials.
+- Modern lifestyle.
+- Quality-focused product presentation.
+
+Brand personality:
+- Minimal.
+- Sophisticated.
+- Confident.
+- Contemporary.
+- Clean.
+- Accessible premium.
+
+Visual direction:
+- Editorial fashion photography.
+- Large product imagery.
+- Generous whitespace.
+- Minimal typography.
+- Strong product grids.
+- Carefully structured navigation.
+- Clean shopping interactions.
+- Subtle transitions.
+- Premium retail atmosphere.
+
+Use the reference website to understand its layout patterns and user experience, but develop an original identity, original content, original visual assets, and original implementation.
+
+Do not use UNIQLO logos, proprietary product photography, copyrighted campaign artwork, or trademarks in the final product.
+
+The website should be clearly identifiable as a fictional retail brand.
+
+---
+
+## 3. REFERENCE WEBSITE ANALYSIS — MANDATORY FIRST STEP
+
+Before writing code, inspect:
+
+https://www.uniqlo.com/in/en/
+
+Study the reference website's:
+
+1. Homepage composition.
+2. Announcement and promotional banners.
+3. Main navigation.
+4. Women, Men, Kids and Baby shopping categories.
+5. Mega-menu behavior.
+6. Search experience.
+7. Category navigation.
+8. Product listing layouts.
+9. Product cards.
+10. Product detail experience.
+11. Product imagery and gallery behavior.
+12. Promotional campaigns.
+13. Editorial storytelling.
+14. Responsive behavior.
+15. Cart and shopping experience.
+16. Footer architecture.
+
+Pay particular attention to the way the website balances editorial fashion content with direct shopping functionality.
+
+Create a reference analysis document at:
+
+`docs/REFERENCE_ANALYSIS.md`
+
+Document:
+- Observed design patterns.
+- Navigation hierarchy.
+- Homepage section structure.
+- Shopping journey.
+- Responsive behavior.
+- Reusable UI components.
+- Implementation opportunities.
+
+If a reference page cannot be inspected fully, do not pretend that it was. Use the accessible portions and clearly identify any assumptions.
+
+**Important:** Analyze the reference first. Do not immediately generate the entire application.
+
+---
+
+## 4. DESIGN SYSTEM
+
+Build a consistent design system rather than styling each component independently.
+
+### Visual language
+
+Use a refined minimalist fashion-retail aesthetic.
+
+Suggested palette:
+- Primary background: White.
+- Secondary background: Warm off-white.
+- Primary text: Near-black.
+- Secondary text: Neutral grey.
+- Borders: Very light grey.
+- Accent: A restrained, distinctive color for FORME.
+- Sale indicators: Clear but visually controlled.
+
+Typography:
+- Modern sans-serif.
+- Strong editorial headlines.
+- Highly readable product information.
+- Clear price hierarchy.
+- Consistent font weights and spacing.
+
+Suggested typography:
+- Inter.
+- Manrope.
+- Helvetica Neue or an appropriate system alternative.
+
+### Layout principles
+
+- Large edge-to-edge editorial imagery.
+- Consistent maximum content widths.
+- Responsive product grids.
+- Generous vertical spacing.
+- Clear visual hierarchy.
+- Consistent image ratios.
+- Minimal card decoration.
+- Smooth but restrained motion.
+
+### Responsive breakpoints
+
+Design deliberately for:
+- Mobile: 360px and above.
+- Tablet: 768px and above.
+- Desktop: 1024px and above.
+- Large desktop: 1440px and above.
+
+The mobile experience must be intentionally designed, not merely a compressed desktop layout.
+
+---
+
+## 5. WEBSITE ARCHITECTURE
+
+Build a complete multi-page e-commerce experience.
+
+### A. Homepage
+
+Create a high-quality homepage containing:
+
+1. Announcement bar.
+2. Main navigation.
+3. Desktop mega-menu.
+4. Mobile navigation drawer.
+5. Search interface.
+6. Large editorial hero campaign.
+7. Campaign headline and CTA.
+8. New arrivals section.
+9. Women's collection.
+10. Men's collection.
+11. Seasonal collection.
+12. Best sellers.
+13. Essential clothing collection.
+14. Editorial fashion stories.
+15. Promotional campaign banners.
+16. Product recommendations.
+17. Newsletter subscription.
+18. Comprehensive footer.
+
+The homepage should feel visually rich without becoming cluttered.
+
+Use realistic product imagery and carefully art-directed fashion campaigns.
+
+### B. Navigation
+
+Primary categories:
+
+- Women
+- Men
+- Kids
+- Baby
+- New Arrivals
+- Collections
+- Sale
+
+Category examples:
+
+**Women**
+- T-shirts
+- Shirts & Blouses
+- Knitwear
+- Dresses
+- Jeans
+- Trousers
+- Outerwear
+- Activewear
+- Innerwear
+- Accessories
+
+**Men**
+- T-shirts
+- Shirts
+- Polos
+- Sweatshirts
+- Knitwear
+- Jeans
+- Trousers
+- Outerwear
+- Activewear
+- Innerwear
+- Accessories
+
+**Kids**
+- Tops
+- Bottoms
+- Outerwear
+- Essentials
+
+**Baby**
+- Bodysuits
+- Tops
+- Bottoms
+- Essentials
+
+Implement:
+- Hover-based desktop mega menus.
+- Click-based mobile menus.
+- Category navigation.
+- Search suggestions.
+- Search result navigation.
+- Active navigation states.
+
+### C. Product listing pages
+
+Create reusable collection/category pages.
+
+Each page should contain:
+- Breadcrumbs.
+- Collection title.
+- Editorial category description.
+- Category banner.
+- Product count.
+- Sort controls.
+- Filter sidebar on desktop.
+- Filter drawer on mobile.
+- Responsive product grid.
+- Pagination or load-more functionality.
+
+Filters:
+- Category.
+- Size.
+- Color.
+- Price range.
+- Availability.
+- Collection.
+- Product type.
+
+Sorting:
+- Featured.
+- Newest.
+- Price low to high.
+- Price high to low.
+- Best selling.
+
+### D. Product cards
+
+Every product card should support:
+
+- Product image.
+- Secondary image on hover.
+- Product name.
+- Product description.
+- Price.
+- Original price when discounted.
+- Sale indicator.
+- Available colors.
+- Available sizes where appropriate.
+- Wishlist control.
+- Quick-add interaction.
+
+Cards must have consistent proportions and professional image presentation.
+
+### E. Product detail page
+
+Engineer a complete product detail experience.
+
+Include:
+- Product image gallery.
+- Main product image.
+- Thumbnail navigation.
+- Product name.
+- Price.
+- Discount information.
+- Color selection.
+- Size selection.
+- Size guide.
+- Size availability.
+- Quantity selector.
+- Add-to-cart button.
+- Wishlist button.
+- Product description.
+- Product features.
+- Material and care instructions.
+- Delivery information.
+- Returns information.
+- Related products.
+- Recently viewed products.
+
+The add-to-cart interaction must validate required selections before proceeding.
+
+### F. Shopping cart
+
+Create a functional cart experience.
+
+Features:
+- Cart drawer.
+- Full cart page.
+- Product image.
+- Product name.
+- Selected size.
+- Selected color.
+- Quantity adjustment.
+- Remove product.
+- Subtotal.
+- Discount calculation.
+- Delivery estimate.
+- Empty cart state.
+- Continue shopping.
+- Checkout CTA.
+
+Cart state must persist across page refreshes.
+
+### G. Checkout demo
+
+Create a realistic checkout flow suitable for portfolio demonstration.
+
+Steps:
+1. Contact information.
+2. Delivery address.
+3. Shipping method.
+4. Order summary.
+5. Payment method selection.
+6. Order confirmation.
+
+Support:
+- Form validation.
+- Address validation.
+- Order summary.
+- Demo payment simulation.
+- Confirmation screen.
+- Order reference generation.
+
+Do not collect real payment credentials or pretend to process real payments.
+
+Clearly label the checkout as a demonstration environment.
+
+### H. Search
+
+Build a functional product search experience.
+
+Include:
+- Search overlay.
+- Search input.
+- Suggested categories.
+- Popular searches.
+- Product suggestions.
+- Search results.
+- No-results state.
+- Search clear button.
+
+Search should work against the actual product catalogue.
+
+### I. Wishlist
+
+Implement:
+- Add/remove wishlist items.
+- Wishlist page.
+- Persistent state.
+- Empty wishlist state.
+- Move wishlist item to cart.
+
+### J. Editorial / campaign pages
+
+Build reusable campaign landing pages.
+
+Examples:
+- The Everyday Collection.
+- Modern Essentials.
+- Seasonal Layers.
+- The Art of Simplicity.
+- Everyday Comfort.
+
+Each campaign should contain:
+- Hero image.
+- Editorial headline.
+- Campaign description.
+- Supporting image sections.
+- Featured products.
+- Shopping CTA.
+
+---
+
+## 6. PRODUCT CATALOGUE
+
+Create a realistic seeded product catalogue.
+
+Target:
+- At least 40 products.
+- Women, Men, Kids and Baby categories.
+- Multiple product types.
+- Multiple colors.
+- Multiple sizes.
+- Different price ranges.
+- Selected discounted products.
+- New arrivals.
+- Best sellers.
+- Featured products.
+
+Every product should have structured data:
+
+- Product ID.
+- Slug.
+- Name.
+- Description.
+- Category.
+- Subcategory.
+- Price.
+- Discount price.
+- Images.
+- Available colors.
+- Available sizes.
+- Stock quantity.
+- Product status.
+- Featured status.
+- New arrival status.
+- Product attributes.
+
+Do not use the same image for every product.
+
+Use suitable, legally usable fashion imagery from permitted image sources or original generated assets.
+
+If remote images are used:
+- Verify that URLs work.
+- Use optimized formats.
+- Configure allowed image domains.
+- Provide fallbacks.
+- Avoid broken images.
+
+Never invent product images or reference nonexistent local assets.
+
+---
+
+## 7. FUNCTIONAL REQUIREMENTS
+
+This is a functional application, not a static Figma-style presentation.
+
+Every visible interactive element must work.
+
+Implement:
+- Navigation.
+- Mega menus.
+- Mobile menu.
+- Search.
+- Filtering.
+- Sorting.
+- Product detail navigation.
+- Color selection.
+- Size selection.
+- Quantity selection.
+- Add to cart.
+- Cart editing.
+- Wishlist.
+- Newsletter validation.
+- Checkout demo.
+- Order confirmation.
+- Product recommendations.
+- Responsive drawers and modals.
+
+Add:
+- Loading states.
+- Empty states.
+- Error states.
+- Success feedback.
+- Disabled states.
+- Form validation.
+- Accessible keyboard interactions.
+
+Do not use dead buttons, placeholder links, fake interactions, or decorative controls that do nothing.
+
+---
+
+## 8. TECHNICAL ARCHITECTURE
+
+First inspect the existing repository.
+
+Preserve existing working architecture where appropriate. Do not rewrite the project or change frameworks unnecessarily.
+
+If starting from scratch, prefer:
+
+- Next.js with App Router.
+- React.
+- TypeScript.
+- Tailwind CSS.
+- Reusable component architecture.
+- Neon PostgreSQL.
+- Drizzle ORM.
+- Zod validation.
+- Vercel deployment.
+
+### Suggested architecture
+
+Separate the application into:
+
+1. Presentation layer.
+2. Reusable component layer.
+3. Domain/business logic layer.
+4. API layer.
+5. Database layer.
+6. Authentication and authorization layer.
+
+Suggested modules:
+
+- products
+- categories
+- collections
+- search
+- cart
+- wishlist
+- checkout
+- orders
+- customers
+- inventory
+- promotions
+- newsletter
+
+Use server components where appropriate and client components only where interactivity requires them.
+
+Avoid unnecessarily turning the entire application into client-rendered components.
+
+### Database
+
+Use Neon PostgreSQL as the persistent data store.
+
+Suggested tables:
+
+- users
+- customer_profiles
+- categories
+- products
+- product_images
+- product_variants
+- product_inventory
+- collections
+- collection_products
+- carts
+- cart_items
+- wishlists
+- wishlist_items
+- addresses
+- orders
+- order_items
+- promotions
+- newsletter_subscribers
+
+Use:
+- Proper relationships.
+- Foreign keys.
+- Unique constraints.
+- Indexes.
+- Database migrations.
+- Transactions for order creation.
+- Server-side validation.
+- Ownership checks.
+
+Do not store the entire application catalogue or order history only in localStorage.
+
+For the demo, seed the database with realistic product data.
+
+If credentials are unavailable, implement a clearly separated demo data adapter while preserving the intended database architecture. Document what requires configuration.
+
+### API
+
+Create versioned, validated API endpoints where appropriate.
+
+Examples:
+
+- GET /api/v1/products
+- GET /api/v1/products/[slug]
+- GET /api/v1/categories
+- GET /api/v1/collections
+- GET /api/v1/search
+- GET /api/v1/cart
+- POST /api/v1/cart/items
+- PATCH /api/v1/cart/items/[id]
+- DELETE /api/v1/cart/items/[id]
+- GET /api/v1/wishlist
+- POST /api/v1/wishlist
+- POST /api/v1/orders
+- GET /api/v1/orders/[id]
+
+Validate input with Zod.
+
+Do not trust client-submitted prices, discounts, inventory, or totals. Recalculate them server-side.
+
+---
+
+## 9. GS SOFTWARES PORTFOLIO PRESENTATION
+
+This is an important requirement.
+
+The retail website must look like a real customer-facing fashion store.
+
+Do not turn its homepage into a GS Softwares agency homepage.
+
+Instead, integrate subtle agency attribution in appropriate locations:
+
+- Footer: "Digital Commerce Experience by GS Softwares".
+- Optional small "GS Softwares Showcase" label.
+- A dedicated case-study link outside the customer shopping journey.
+- An optional portfolio presentation page at `/showcase`.
+
+Create `/showcase` as a separate agency-facing case study.
+
+It should explain:
+- Project: FORME Fashion Commerce.
+- Client concept: Fictional fashion retailer.
+- Built by: GS Softwares.
+- Problem being demonstrated.
+- Solution architecture.
+- E-commerce functionality.
+- Technology stack.
+- Responsive experience.
+- Engineering capabilities.
+
+Do not fabricate real clients, revenue, conversion rates, customer numbers, or business results.
+
+Clearly identify FORME as a fictional demonstration project.
+
+The showcase page should demonstrate GS Softwares' engineering capabilities without compromising the retail brand experience.
+
+---
+
+## 10. PERFORMANCE AND SEO
+
+Optimize for:
+- Fast initial page load.
+- Responsive images.
+- Lazy loading.
+- Image dimensions to prevent layout shift.
+- Efficient server rendering.
+- Minimal JavaScript.
+- Reusable components.
+- Database query efficiency.
+- Product metadata.
+- Structured data where appropriate.
+- Open Graph metadata.
+- Semantic HTML.
+- Sitemap.
+- Robots configuration.
+- Accessible navigation.
+- Descriptive image alt text.
+
+Aim for strong Core Web Vitals.
+
+Do not sacrifice usability or image quality simply to chase a Lighthouse score.
+
+---
+
+## 11. SECURITY
+
+Implement:
+- Server-side validation.
+- Secure authentication if accounts are enabled.
+- Secure session handling.
+- User ownership checks.
+- Parameterized database queries.
+- Environment variable protection.
+- Rate limiting for sensitive endpoints.
+- Safe error responses.
+- Order integrity checks.
+- Inventory validation.
+- Input sanitization where required.
+
+Never expose database credentials or secrets in client-side bundles.
+
+Do not store raw payment credentials.
+
+---
+
+## 12. TESTING AND QUALITY ASSURANCE
+
+Use automated tests appropriate to the existing stack.
+
+Test:
+- Homepage rendering.
+- Navigation.
+- Product listing.
+- Search.
+- Filtering.
+- Sorting.
+- Product detail pages.
+- Variant selection.
+- Cart persistence.
+- Cart quantity updates.
+- Wishlist persistence.
+- Checkout validation.
+- Order creation.
+- Responsive navigation.
+- Mobile layout.
+- Database persistence.
+- Error states.
+
+Use:
+- TypeScript checks.
+- ESLint.
+- Unit tests.
+- Integration tests.
+- Playwright end-to-end tests.
+
+Manually inspect:
+- 360px mobile.
+- 390px mobile.
+- Tablet.
+- 1366px desktop.
+- 1440px desktop.
+- Large desktop.
+
+Check for:
+- Horizontal overflow.
+- Broken images.
+- Misaligned grids.
+- Inconsistent typography.
+- Poor image crops.
+- Overlapping navigation.
+- Unresponsive controls.
+- Broken routes.
+- Console errors.
+
+---
+
+## 13. IMPLEMENTATION WORKFLOW
+
+Work incrementally.
+
+### Phase 01 — Repository audit and reference research
+- Inspect the existing repository.
+- Identify frameworks and dependencies.
+- Inspect current architecture.
+- Analyze the reference website.
+- Produce implementation plan.
+- Identify missing services and credentials.
+
+Deliver:
+`docs/REFERENCE_ANALYSIS.md`
+`docs/PROJECT_AUDIT.md`
+`docs/IMPLEMENTATION_PLAN.md`
+
+Do not generate the entire application yet.
+
+### Phase 02 — Design system and foundation
+- Establish typography.
+- Establish colors.
+- Create reusable components.
+- Implement responsive layout.
+- Build navigation.
+- Build header and footer.
+
+### Phase 03 — Homepage
+- Build editorial hero.
+- Build promotional campaigns.
+- Build category sections.
+- Build product grids.
+- Build editorial sections.
+
+### Phase 04 — Product catalogue
+- Product data model.
+- Seed products.
+- Category pages.
+- Filters.
+- Sorting.
+- Product cards.
+- Product detail pages.
+
+### Phase 05 — Commerce functionality
+- Search.
+- Cart.
+- Wishlist.
+- Product variants.
+- Checkout demo.
+- Order confirmation.
+
+### Phase 06 — Backend and database
+- Neon integration.
+- Drizzle schema.
+- Migrations.
+- APIs.
+- Data persistence.
+- Validation.
+- Security.
+
+### Phase 07 — GS Softwares showcase
+- Dedicated `/showcase` page.
+- Technical case study.
+- Agency attribution.
+
+### Phase 08 — Testing and refinement
+- Responsive QA.
+- Automated tests.
+- Accessibility.
+- Performance.
+- Security.
+- Fix all critical defects.
+
+### Phase 09 — Deployment
+- Production build.
+- Vercel deployment configuration.
+- Environment variable documentation.
+- Database configuration.
+- Final deployment verification.
+
+Do not claim a phase is complete until its acceptance criteria have been tested.
+
+---
+
+## 14. REQUIRED DOCUMENTATION
+
+Maintain:
+
+- `docs/PROJECT_AUDIT.md`
+- `docs/REFERENCE_ANALYSIS.md`
+- `docs/IMPLEMENTATION_PLAN.md`
+- `docs/ARCHITECTURE.md`
+- `docs/DATABASE.md`
+- `docs/API.md`
+- `docs/TESTING.md`
+- `docs/DEPLOYMENT.md`
+- `docs/PROJECT_STATUS.md`
+
+Keep project status updated after every phase.
+
+Document:
+- What was implemented.
+- What was tested.
+- Test results.
+- Known limitations.
+- Configuration requirements.
+- Outstanding defects.
+
+---
+
+## 15. FINAL ACCEPTANCE CRITERIA
+
+The project is complete only when:
+
+1. The homepage is visually polished.
+2. The navigation works on desktop and mobile.
+3. All main shopping categories work.
+4. Product listings are functional.
+5. Product details are complete.
+6. Search works.
+7. Filtering and sorting work.
+8. Product variants work.
+9. Cart functionality works.
+10. Wishlist works.
+11. Checkout demo works.
+12. Orders persist in the database when configured.
+13. The website is responsive.
+14. Images load correctly.
+15. No important interaction is fake.
+16. No critical TypeScript or build errors remain.
+17. Core tests pass.
+18. The `/showcase` page explains GS Softwares' work.
+19. Documentation is complete.
+20. The application can be deployed and demonstrated reliably.
+
+---
+
+## 16. CREATIVE DIRECTION — FINAL QUALITY BAR
+
+The finished website should communicate:
+
+"This is the kind of sophisticated e-commerce experience GS Softwares can engineer for a serious retail business."
+
+It should feel:
+- International.
+- Premium.
+- Commercially credible.
+- Visually disciplined.
+- Fast.
+- Functional.
+- Production-minded.
+
+Avoid:
+- Generic AI-generated website aesthetics.
+- Excessive gradients.
+- Unnecessary glassmorphism.
+- Random animations.
+- Oversized rounded cards everywhere.
+- Fake product data presentation.
+- Repetitive imagery.
+- Empty product grids.
+- Broken navigation.
+- Decorative buttons.
+- Overcomplicated UI.
+
+Prioritize the actual shopping experience.
+
+**The reference is UNIQLO's experience. The identity is FORME. The engineering showcase belongs to GS Softwares.**
+
+# EXECUTION COMMAND
+
+START WITH PHASE 01: REPOSITORY AUDIT AND REFERENCE WEBSITE ANALYSIS.
+
+Inspect before implementing.
+
+Present the audit, proposed architecture, design direction, and phased implementation plan.
+
+Then begin implementation incrementally, testing each phase before proceeding.
+
+Do not merely create a screenshot-like replica. Build a complete, responsive, functional fashion e-commerce demonstration that showcases GS Softwares' engineering quality.
