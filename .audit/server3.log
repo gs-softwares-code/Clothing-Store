@@ -1,0 +1,10 @@
+▲ Next.js 16.4.6
+- Local:         http://localhost:3313
+- Network:       http://10.216.129.241:3313
+✓ Ready in 948ms
+⚠ Warning: Next.js ignored pnpm-lock.yaml in C:\Users\Code66 because it is outside the current Git repository (C:\Users\Code66\Pictures\Claude Code\Projects\Clothing Store).
+ To use this directory, set `outputFileTracingRoot` in your Next.js config.
+
+✓ Running next.config.ts took 144ms
+Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames

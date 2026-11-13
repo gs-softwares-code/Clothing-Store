@@ -1,0 +1,8 @@
+▲ Next.js 16.4.6
+- Local:         http://localhost:3312
+- Network:       http://10.216.129.241:3312
+✓ Ready in 485ms
+⚠ Warning: Next.js ignored pnpm-lock.yaml in C:\Users\Code66 because it is outside the current Git repository (C:\Users\Code66\Pictures\Claude Code\Projects\Clothing Store).
+ To use this directory, set `outputFileTracingRoot` in your Next.js config.
+
+✓ Running next.config.ts took 80ms
