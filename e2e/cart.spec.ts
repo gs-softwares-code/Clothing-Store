@@ -6,16 +6,18 @@ async function addToBag(page: import("@playwright/test").Page) {
   await page.goto(`/product/${SLUG}`);
   await page.getByRole("button", { name: /Colour: Black/ }).click();
   await page.getByRole("button", { name: "M", exact: true }).click();
-  await page.getByRole("button", { name: /Add to bag/ }).click();
+  await page.getByRole("button", { name: "Add to bag", exact: true }).click();
   await expect(page.getByText(/Added to bag/)).toBeVisible();
+  await page.getByRole("button", { name: /Dismiss notification/ }).click();
 }
 
 test.describe("cart", () => {
   test("drawer opens, updates quantity, and removes items", async ({ page }) => {
     await addToBag(page);
     await page.getByRole("button", { name: /Shopping bag/ }).click();
-    await expect(page.getByRole("dialog")).toBeVisible();
-    await expect(page.getByText("Relaxed Boxy Cotton Tee")).toBeVisible();
+    const drawer = page.getByRole("dialog");
+    await expect(drawer).toBeVisible();
+    await expect(drawer.getByText("Relaxed Boxy Cotton Tee")).toBeVisible();
 
     await page.getByRole("button", { name: "Increase quantity" }).click();
     await expect(page.getByText("₹2,580").first()).toBeVisible(); // 2 × 1290
@@ -28,7 +30,9 @@ test.describe("cart", () => {
     await addToBag(page);
     await page.reload();
     await page.getByRole("button", { name: /Shopping bag/ }).click();
-    await expect(page.getByText("Relaxed Boxy Cotton Tee")).toBeVisible();
+    await expect(
+      page.getByRole("dialog").getByText("Relaxed Boxy Cotton Tee"),
+    ).toBeVisible();
   });
 
   test("full cart page shows summary totals", async ({ page }) => {

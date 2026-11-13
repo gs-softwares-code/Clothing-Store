@@ -5,6 +5,7 @@ const SLUG = "relaxed-boxy-cotton-tee";
 test.describe("product detail", () => {
   test("adding to bag requires a size", async ({ page }) => {
     await page.goto(`/product/${SLUG}`);
+    await page.getByRole("button", { name: /Colour: Black/ }).click();
     await page.getByRole("button", { name: "Add to bag", exact: true }).click();
     await expect(page.getByText("Please select a size.")).toBeVisible();
     await expect(page.getByText(/Added to bag/)).toBeHidden();

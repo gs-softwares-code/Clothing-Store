@@ -47,3 +47,6 @@ coverage/
 
 # audit artifacts
 .audit/
+
+# runtime demo state
+.data/

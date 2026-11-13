@@ -21,7 +21,7 @@ interface Props {
 
 export default async function OrderConfirmationPage({ params }: Props) {
   const { id } = await params;
-  const order = getOrder(id);
+  const order = await getOrder(id);
   if (!order) notFound();
 
   return (

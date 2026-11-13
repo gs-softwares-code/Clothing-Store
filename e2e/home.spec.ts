@@ -12,8 +12,8 @@ test.describe("homepage", () => {
   });
 
   test("desktop mega menu opens on hover and contains subcategories", async ({ page }) => {
-    test.skip((await page.viewportSize())!.width < 768, "mega menu is desktop-only");
     await page.goto("/");
+    test.skip((await page.viewportSize())!.width < 768, "mega menu is desktop-only");
     const women = page.getByRole("button", { name: "Women" }).first();
     await women.hover();
     await expect(page.getByRole("link", { name: "T-Shirts" }).first()).toBeVisible();

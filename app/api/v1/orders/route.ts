@@ -56,7 +56,7 @@ export async function POST(request: Request) {
   const methodLabel =
     SHIPPING_METHODS.find((m) => m.id === method)?.label ?? "Standard delivery";
 
-  const order = storeOrder({
+  const order = await storeOrder({
     customer: { email: shipping.email, name: `${shipping.firstName} ${shipping.lastName}` },
     shipping,
     method,
@@ -84,5 +84,5 @@ export async function GET(request: Request) {
   rateLimit.set(ip, hits);
 
   const { listOrders } = await import("@/lib/server/orders-store");
-  return NextResponse.json({ orders: listOrders() });
+  return NextResponse.json({ orders: await listOrders() });
 }

@@ -1,5 +1,9 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { getOrder, listOrders, storeOrder } from "@/lib/server/orders-store";
+import { promises as fs } from "node:fs";
+import path from "node:path";
+
+const FILE = path.join(process.cwd(), ".data", "orders.json");
 
 const base = {
   customer: { email: "a@b.com", name: "A B" },
@@ -24,30 +28,41 @@ const base = {
 };
 
 describe("demo order store", () => {
-  beforeEach(() => {
-    for (const id of listOrders().map((o) => o.id)) {
-      // clear store internals by re-importing fresh state is not possible;
-      // instead track that ids/references are unique per create.
-      void id;
+  beforeEach(async () => {
+    try {
+      await fs.rm(FILE, { force: true });
+    } catch {
+      /* ignore */
     }
   });
 
-  it("stores orders and assigns unique ids + references", () => {
-    const a = storeOrder(base);
-    const b = storeOrder({ ...base, subtotal: 2000 });
+  afterEach(async () => {
+    try {
+      await fs.rm(FILE, { force: true });
+    } catch {
+      /* ignore */
+    }
+  });
+
+  it("stores orders and assigns unique ids + references", async () => {
+    const a = await storeOrder(base);
+    const b = await storeOrder({ ...base, subtotal: 2000 });
     expect(a.id).not.toBe(b.id);
     expect(a.reference).not.toBe(b.reference);
     expect(a.reference).toMatch(/^FME-\d{4}-\d+$/);
     expect(a.demo).toBe(true);
-    expect(getOrder(a.id)).toEqual(a);
+    expect(await getOrder(a.id)).toEqual(a);
   });
 
-  it("returns undefined for missing ids", () => {
-    expect(getOrder("nope")).toBeUndefined();
+  it("returns undefined for missing ids", async () => {
+    expect(await getOrder("nope")).toBeUndefined();
   });
 
-  it("tracks createdAt", () => {
-    const o = storeOrder(base);
+  it("tracks createdAt and persists to disk", async () => {
+    const o = await storeOrder(base);
     expect(new Date(o.createdAt).getTime()).toBeLessThanOrEqual(Date.now());
+    const onDisk = JSON.parse(await fs.readFile(FILE, "utf8"));
+    expect(onDisk.some((x: { id: string }) => x.id === o.id)).toBe(true);
+    expect((await listOrders()).length).toBe(1);
   });
 });

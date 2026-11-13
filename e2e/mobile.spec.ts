@@ -3,12 +3,9 @@ import { test, expect } from "@playwright/test";
 test.describe("mobile experience", () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
-  const isMobile = async (page: import("@playwright/test").Page) =>
-    (await page.viewportSize())!.width < 768;
-
   test("hamburger opens category drawer", async ({ page }) => {
-    test.skip(await isMobile(page) ? false : true, "desktop-only control");
     await page.goto("/");
+    test.skip((await page.viewportSize())!.width >= 768, "mobile-only control");
     await page.getByRole("button", { name: "Open menu" }).click();
     await expect(page.getByRole("dialog")).toBeVisible();
     await expect(page.getByRole("link", { name: "Women" })).toBeVisible();
@@ -27,8 +24,8 @@ test.describe("mobile experience", () => {
   });
 
   test("product card quick-add visible on touch", async ({ page }) => {
-    test.skip(await isMobile(page) ? false : true, "touch-only behavior");
     await page.goto("/women");
+    test.skip((await page.viewportSize())!.width >= 768, "touch-only behavior");
     const card = page.locator("a[href^='/product/']").filter({ has: page.locator("h3") }).first();
     await expect(card.getByRole("button", { name: /Add to bag/ })).toBeVisible();
   });

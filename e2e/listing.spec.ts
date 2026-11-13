@@ -12,8 +12,8 @@ test.describe("product listing", () => {
   });
 
   test("filtering by colour updates results and URL", async ({ page }) => {
-    test.skip((await page.viewportSize())!.width < 768, "sidebar is desktop-only (drawer covered separately)");
     await page.goto("/women");
+    test.skip((await page.viewportSize())!.width < 768, "sidebar is desktop-only (drawer covered separately)");
     const before = await page.locator("a[href^='/product/']").filter({ has: page.locator("h3") }).count();
     await page.getByRole("checkbox", { name: /black/i }).first().check();
     await expect(page).toHaveURL(/color=black/);
@@ -33,8 +33,8 @@ test.describe("product listing", () => {
   });
 
   test("empty state appears when filters match nothing", async ({ page }) => {
-    test.skip((await page.viewportSize())!.width < 768, "sidebar is desktop-only");
     await page.goto("/men");
+    test.skip((await page.viewportSize())!.width < 768, "sidebar is desktop-only");
     // choose a combination likely to be empty: size XXL on men products w/o XXL
     // safer: use price bin above ₹4,000 on kids (no kids product above threshold)
     await page.goto("/kids");
