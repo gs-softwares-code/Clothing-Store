@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  /* FORME palette */
+  --color-canvas: #ffffff;
+  --color-cream: #f5f2ec;
+  --color-sand: #ece8e0;
+  --color-ink: #181816;
+  --color-ink-soft: #2d2d28;
+  --color-muted: #6e6e66;
+  --color-faint: #a8a89e;
+  --color-line: #e7e4de;
+  --color-accent: #314a3c;
+  --color-accent-deep: #22362b;
+  --color-accent-tint: #edf1ee;
+  --color-sale: #b23a2e;
+  --color-sale-tint: #f9efed;
+
+  /* Type */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-canvas text-ink font-sans antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Thin, quiet scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sand) transparent;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Utility: hide until hydrated (prevents FOUC for client-only regions) */
+.hydrated-hide {
+  opacity: 0;
+}
+.hydrated-show {
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
