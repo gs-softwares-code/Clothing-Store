@@ -19,6 +19,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
 
   useEffect(() => {
     if (open) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setQuery("");
       const t = window.setTimeout(() => inputRef.current?.focus(), 60);
       return () => window.clearTimeout(t);

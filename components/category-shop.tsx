@@ -69,7 +69,7 @@ export function CategoryShop({ categoryId, subId }: { categoryId: string; subId?
       <section className="py-10 md:py-14">
         <Container>
           <Suspense fallback={<p className="text-sm text-muted">Loading products…</p>}>
-            <ProductListing products={products} title={title} description={cat.blurb} />
+            <ProductListing products={products} />
           </Suspense>
         </Container>
       </section>

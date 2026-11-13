@@ -4,5 +4,5 @@ for (const id of ids) {
   try {
     const res = await fetch(url, { method: "HEAD", redirect: "follow", signal: AbortSignal.timeout(8000) });
     console.log(`${res.status}\t${id}`);
-  } catch (e) { console.log(`ERR\t${id}`); }
+  } catch { console.log(`ERR\t${id}`); }
 }

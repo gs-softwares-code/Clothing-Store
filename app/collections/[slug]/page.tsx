@@ -126,7 +126,7 @@ export default async function CollectionPage({ params }: Props) {
             <span className="text-sm text-muted">{products.length} products</span>
           </div>
           <Suspense fallback={<p className="text-sm text-muted">Loading products…</p>}>
-            <ProductListing products={products} title={collection.label} />
+            <ProductListing products={products} />
           </Suspense>
         </Container>
       </section>

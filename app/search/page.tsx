@@ -57,7 +57,7 @@ export default async function SearchPage({ searchParams }: Props) {
         ) : (
           <div className="mt-6">
             <Suspense fallback={<p className="text-sm text-muted">Loading products…</p>}>
-              <ProductListing products={results} title="Search results" />
+              <ProductListing products={results} />
             </Suspense>
           </div>
         )}

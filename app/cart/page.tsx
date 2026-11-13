@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { Button, LinkButton } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/button";
 import { ImageWithFallback } from "@/components/image-with-fallback";
 import { IconBag, IconMinus, IconPlus, IconTrash } from "@/components/ui/icon";
 import { useShop } from "@/lib/commerce/shop-context";

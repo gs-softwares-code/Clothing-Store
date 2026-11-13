@@ -13,6 +13,7 @@ export function RecentlyViewed({ currentSlug }: { currentSlug: string }) {
     try {
       const recent = JSON.parse(localStorage.getItem(RECENT_KEY) ?? "[]") as string[];
       const filtered = recent.filter((s) => s !== currentSlug).slice(0, 4);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSlugs(filtered);
     } catch {
       /* ignore */

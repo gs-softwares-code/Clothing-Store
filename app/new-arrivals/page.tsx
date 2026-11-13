@@ -29,7 +29,7 @@ export default function NewArrivalsPage() {
       <section className="py-10 md:py-12">
         <Container>
           <Suspense fallback={<p className="text-sm text-muted">Loading products…</p>}>
-            <ProductListing products={products} title="New arrivals" />
+            <ProductListing products={products} />
           </Suspense>
         </Container>
       </section>

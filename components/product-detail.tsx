@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import type { Product } from "@/lib/domain/types";
 import { useShop } from "@/lib/commerce/shop-context";
 import { useToast } from "./ui/toast";

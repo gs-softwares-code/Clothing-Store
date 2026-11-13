@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FORME — Fashion E-Commerce
 
-## Getting Started
+A premium, production-quality fashion e-commerce experience, built by
+**GS Softwares** as an engineering showcase. FORME is a fictional retail
+brand — minimalist, editorial, and fully functional.
 
-First, run the development server:
+> The reference experience is UNIQLO's. The identity is FORME. The
+> engineering showcase belongs to GS Softwares.
+
+## Features
+
+- Editorial homepage: campaigns, category tiles, new arrivals, best sellers,
+  essentials, brand storytelling, newsletter.
+- Complete catalogue: **57 seeded products** across Women / Men / Kids / Baby,
+  with colours, sizes, prices, discounts, materials, and verified imagery.
+- Product listing pages with breadcrumbs, banners, sorting, and a full
+  filter system (colour, size, type, collection, price) — synced to the URL.
+- Product detail pages: gallery, colour/size validation, size guide,
+  quantity, wishlist, delivery/returns info, related + recently viewed.
+- Search overlay with suggestions, live results, and a dedicated results page.
+- Cart drawer + cart page with quantities, persistence (localStorage), and
+  delivery logic.
+- Wishlist with persistent state and move-to-bag.
+- Multi-step **demo checkout** (contact → delivery → payment → review →
+  confirmation with order reference). Server-side recalculation of every total.
+- Versioned API (`/api/v1/*`) with Zod validation.
+- GS Softwares `/showcase` case-study page.
+- Responsive from 360px; accessible drawers/modals; semantic HTML; sitemap + robots; JSON-LD product data.
+
+## Tech stack
+
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 ·
+Zod · Drizzle (schema/ORM, Postgres-ready) · Vitest · Playwright.
+
+## Running
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npx next start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Testing
 
-## Learn More
+```bash
+npm test            # unit (Vitest)
+npm run test:e2e   # end-to-end (Playwright)
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Docs
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`docs/` contains: project audit, reference analysis, implementation plan,
+architecture, database, API, testing, deployment, and live project status.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Demo mode
 
-## Deploy on Vercel
+The app runs immediately with an in-memory data adapter. Set `DATABASE_URL`
+to enable the included Drizzle/Neon Postgres path (see `docs/DATABASE.md`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⚠️ FORME is a fictional brand and demonstration project. No real products are
+sold, no real payment is processed, and no business metrics are claimed.

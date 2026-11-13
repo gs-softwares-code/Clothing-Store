@@ -10,7 +10,7 @@ import { MegaMenu } from "./mega-menu";
 import { MobileNav } from "./mobile-nav";
 import { SearchOverlay } from "./search-overlay";
 import { CartDrawer } from "./cart-drawer";
-import { IconBag, IconHeart, IconMenu, IconSearch, IconUser } from "./ui/icon";
+import { IconBag, IconHeart, IconMenu, IconSearch } from "./ui/icon";
 
 function CountBadge({ count }: { count: number }) {
   if (count <= 0) return null;
@@ -26,11 +26,13 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-  const { cartCount, wishlist, isWishlisted } = useShop();
+  const { cartCount, wishlist } = useShop();
   const pathname = usePathname();
 
   // Close overlays on route change
+  // (sync with external system: navigation — not a derived-value cascade)
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMegaOpen(null);
     setMobileOpen(false);
     setSearchOpen(false);

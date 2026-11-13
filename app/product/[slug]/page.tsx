@@ -7,7 +7,6 @@ import { ProductGrid } from "@/components/product-grid";
 import { ProductDetail } from "@/components/product-detail";
 import { RecentlyViewed } from "@/components/recently-viewed";
 import { getProductBySlug, getRelatedProducts } from "@/lib/data/catalog";
-import { formatINR } from "@/lib/utils";
 
 interface Props {
   params: Promise<{ slug: string }>;

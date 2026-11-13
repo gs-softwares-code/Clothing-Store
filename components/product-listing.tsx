@@ -3,11 +3,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Product } from "@/lib/domain/types";
-import { cn, formatINR } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { ProductGrid } from "./product-grid";
 import { Drawer, DrawerHeader } from "./ui/drawer";
 import { Button } from "./ui/button";
-import { IconSliders, IconX } from "./ui/icon";
+import { IconSliders } from "./ui/icon";
 
 type SortKey = "featured" | "newest" | "price-asc" | "price-desc" | "bestselling";
 
@@ -28,8 +28,6 @@ const PRICE_BINS: { id: string; label: string; min: number | null; max: number |
 
 interface ProductListingProps {
   products: Product[];
-  title: string;
-  description?: string;
 }
 
 function FacetSection({ title, children }: { title: string; children: React.ReactNode }) {
@@ -43,7 +41,7 @@ function FacetSection({ title, children }: { title: string; children: React.Reac
   );
 }
 
-export function ProductListing({ products, title, description }: ProductListingProps) {
+export function ProductListing({ products }: ProductListingProps) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -75,9 +73,11 @@ export function ProductListing({ products, title, description }: ProductListingP
   }, [products]);
 
   // Hydrate from URL on first load / back-forward
+  // (sync with external system: URL search params — not a derived cascade)
   const hydrated = useRef(false);
   useEffect(() => {
     const sp = new URLSearchParams(searchParams.toString());
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSort((sp.get("sort") as SortKey) || "featured");
     setColors(sp.getAll("color"));
     setSizes(sp.getAll("size"));

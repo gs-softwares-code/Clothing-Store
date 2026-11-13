@@ -48,9 +48,11 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   const [hydrateKey, setHydrateKey] = useState(0);
 
   // Hydrate from localStorage after mount (SSR-safe).
+  // (sync with external system: localStorage — avoids hydration mismatch)
   useEffect(() => {
     const savedCart = readJSON<CartItem[]>(CART_KEY);
     const savedWish = readJSON<string[]>(WISHLIST_KEY);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCart(Array.isArray(savedCart) ? savedCart : []);
     setWishlist(Array.isArray(savedWish) ? savedWish : []);
     setHydrateKey((k) => k + 1);

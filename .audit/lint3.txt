@@ -1,0 +1,30 @@
+
+> forme-scaffold@0.1.0 lint
+> eslint
+
+
+C:\Users\Code66\Pictures\Claude Code\Projects\Clothing Store\components\header.tsx
+  37:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  39:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  41:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+
+C:\Users\Code66\Pictures\Claude Code\Projects\Clothing Store\components\product-detail.tsx
+  4:8  warning  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Code66\Pictures\Claude Code\Projects\Clothing Store\components\product-listing.tsx
+  82:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  84:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  86:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  88:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  90:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+
+C:\Users\Code66\Pictures\Claude Code\Projects\Clothing Store\lib\commerce\shop-context.tsx
+  57:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  59:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+
+C:\Users\Code66\Pictures\Claude Code\Projects\Clothing Store\scripts\verify-images.mjs
+  7:12  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 12 problems (0 errors, 12 warnings)
+  0 errors and 10 warnings potentially fixable with the `--fix` option.
+

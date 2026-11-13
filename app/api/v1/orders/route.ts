@@ -45,7 +45,7 @@ export async function POST(request: Request) {
 
   const subtotal = lines.reduce((s, l) => s + l.unitPrice * l.qty, 0);
   const discount = items
-    .map((item, i) => {
+    .map((item) => {
       const product = getProductById(item.productId)!;
       return product.discountPrice ? (product.price - product.discountPrice) * item.qty : 0;
     })
